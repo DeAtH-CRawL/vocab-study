@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { 
-  Book, Brain, Star, RotateCcw, Lightbulb, ChevronRight, 
-  CheckCircle2, XCircle, ArrowLeft, Flame, Search, Eye,
-  Trophy, ShieldCheck, Layers, Hash, HelpCircle
+  Star, RotateCcw, Lightbulb, ChevronRight, 
+  ArrowLeft, Flame, Eye,
+  Trophy, ShieldCheck, Layers
 } from 'lucide-react';
 
 
@@ -30,11 +30,26 @@ const getLevenshteinDistance = (a, b) => {
 };
 
 export default function App() {
-  const [view, setView] = useState('menu'); 
+  const [view, setView] = useState('menu');
   const [starredTerms, setStarredTerms] = useState(() => {
     const localData = localStorage.getItem('starredTerms');
     return localData ? JSON.parse(localData) : [];
   });
+
+  // --- NEW & MODIFIED STATE ---
+  const [selectedDayKey, setSelectedDayKey] = useState(null);
+  const [weakWords, setWeakWords] = useState([]);
+  const [streak, setStreak] = useState(0);
+
+  // --- MEMOIZATION ---
+  const vocabulary = useMemo(() => masterVocabulary, []);
+  
+  const allWords = useMemo(() => Object.values(vocabulary).flat(), [vocabulary]);
+
+  const starredWords = useMemo(() => 
+    allWords.filter(item => starredTerms.includes(item.term)),
+    [allWords, starredTerms]
+  );
 
   useEffect(() => {
     localStorage.setItem('starredTerms', JSON.stringify(starredTerms));
@@ -45,26 +60,43 @@ export default function App() {
   const [feedback, setFeedback] = useState(null);
   const [results, setResults] = useState([]);
   const [showSummary, setShowSummary] = useState(false);
-  const [selectedDayLabel, setSelectedDayLabel] = useState("");
   
   // Hint State
   const [hintCount, setHintCount] = useState(0);
+
+  // --- KEYBOARD SHORTCUTS ---
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (view !== 'test' || showSummary || e.target.tagName === 'INPUT') return;
+
+      if (e.key.toLowerCase() === 'h') {
+        e.preventDefault();
+        provideHint();
+      }
+      if (e.key.toLowerCase() === 'r') {
+        e.preventDefault();
+        revealAnswer();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [view, showSummary, quizList, currentIndex, userInput, hintCount]); // Dependencies ensure handlers have fresh state
 
   const toggleStar = (term) => {
     setStarredTerms(prev => prev.includes(term) ? prev.filter(t => t !== term) : [...prev, term]);
   };
 
-  const startQuiz = (dayKey) => {
-    let list = [];
-    if (dayKey === 'all') {
-      list = Object.values(masterVocabulary).flat().sort(() => Math.random() - 0.5).slice(0, 30);
-      setSelectedDayLabel("Mixed Master (30 Items)");
+  const startQuiz = (dayKey, wordList = null) => {
+    let list;
+    if (wordList) {
+      list = [...wordList];
+    } else if (dayKey === 'all') {
+      list = allWords.sort(() => Math.random() - 0.5).slice(0, 30);
     } else if (dayKey === 'starred') {
-      list = Object.values(masterVocabulary).flat().filter(item => starredTerms.includes(item.term));
-      setSelectedDayLabel("Starred Terms");
+      list = [...starredWords];
     } else {
-      list = [...masterVocabulary[dayKey]];
-      setSelectedDayLabel(dayKey);
+      list = [...vocabulary[dayKey]];
     }
 
     setQuizList(list.sort(() => Math.random() - 0.5));
@@ -74,6 +106,9 @@ export default function App() {
     setResults([]);
     setShowSummary(false);
     setHintCount(0);
+    setWeakWords([]);
+    setStreak(0);
+    setSelectedDayKey(dayKey);
     setView('test');
   };
 
@@ -106,34 +141,70 @@ export default function App() {
       status = 'correct';
       msg = ["Perfect Recall! ✨", "Spot on! 🎯", "Impressive work! 🚀"][Math.floor(Math.random() * 3)];
       isCorrect = true;
+      setStreak(prev => prev + 1);
     } else if (dist <= 2 && target.length > 3) {
       status = 'close';
       msg = "Almost! Tiny spelling error ✍️";
       isCorrect = true;
+      setStreak(prev => prev + 1);
+    } else {
+      setStreak(0);
+      setWeakWords(prev => [...prev, current]);
     }
 
     setFeedback({ status, msg });
-    setResults(prev => [...prev, { item: current, correct: isCorrect, hinted: hintCount > 0 }]);
+    // Prevent duplicate result entries
+    setResults(prev => {
+      if (prev.some(r => r.item.term === current.term)) return prev;
+      return [...prev, { item: current, correct: isCorrect, hinted: hintCount > 0 }];
+    });
   };
 
   const revealAnswer = () => {
+    // Guard against multiple reveals for the same question
+    if (feedback) return;
+
     const current = quizList[currentIndex];
     setUserInput(current.term);
     setFeedback({ status: 'wrong', msg: "Revealed. Try to remember it for next time!" });
-    setResults(prev => [...prev, { item: current, correct: false, hinted: true }]);
+    setStreak(0);
+    setWeakWords(prev => [...prev, current]);
+    
+    // Prevent duplicate result entries
+    setResults(prev => {
+      if (prev.some(r => r.item.term === current.term)) return prev;
+      return [...prev, { item: current, correct: false, hinted: true }];
+    });
   };
 
   const provideHint = () => {
+    // Guard against hints after an answer is submitted/revealed
+    if (feedback) return;
+    
+    setStreak(0); // Reset streak when a hint is used
     const term = quizList[currentIndex].term;
-    const nextHintLength = hintCount + 1;
-    if (nextHintLength <= term.length) {
-      setHintCount(nextHintLength);
-      // Logic: If user input doesn't match the hint so far, replace it
-      setUserInput(term.substring(0, nextHintLength));
+    const newHintCount = hintCount + 1;
+    if (newHintCount > term.length) return;
+
+    setHintCount(newHintCount);
+    const hintText = term.substring(0, newHintCount);
+
+    // Improved logic: Don't overwrite correct user input, but correct wrong input.
+    if (!term.toLowerCase().startsWith(userInput.toLowerCase())) {
+      setUserInput(hintText);
+    } else if (userInput.length < newHintCount) {
+      setUserInput(hintText);
     }
   };
 
   const nextQuestion = () => {
+    // Re-insert one weak word near the end of the quiz
+    if (weakWords.length > 0 && currentIndex === Math.floor(quizList.length * 0.75)) {
+      const wordToReinsert = weakWords[0];
+      setQuizList(prev => [...prev, wordToReinsert]);
+      setWeakWords(prev => prev.slice(1));
+    }
+
     if (currentIndex < quizList.length - 1) {
       setCurrentIndex(prev => prev + 1);
       setUserInput('');
@@ -182,7 +253,18 @@ export default function App() {
                 <ChevronRight size={24}/>
               </button>
 
-              {Object.keys(masterVocabulary).reverse().map(day => (
+              <button onClick={() => startQuiz('starred')} className="bg-amber-500 p-6 rounded-3xl text-white shadow-xl shadow-amber-100 flex items-center justify-between group hover:scale-[1.02] transition-all col-span-1 md:col-span-2">
+                <div className="flex items-center gap-4">
+                   <div className="p-3 bg-white/10 rounded-2xl"><Star size={32}/></div>
+                   <div className="text-left">
+                     <span className="font-black text-xl block">Starred Terms Review</span>
+                     <span className="text-sm opacity-80">{starredWords.length} starred items</span>
+                   </div>
+                </div>
+                <ChevronRight size={24}/>
+              </button>
+
+              {Object.keys(vocabulary).reverse().map(day => (
                 <button key={day} onClick={() => startQuiz(day)} className="bg-white p-6 rounded-[2rem] border border-slate-200 hover:border-indigo-400 hover:shadow-xl hover:-translate-y-1 transition-all text-left flex items-center justify-between group">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 bg-slate-50 rounded-2xl flex items-center justify-center font-black text-slate-400 group-hover:bg-indigo-50 group-hover:text-indigo-600 transition-colors">
@@ -190,7 +272,7 @@ export default function App() {
                     </div>
                     <div>
                       <span className="font-bold text-lg text-slate-800">{day}</span>
-                      <p className="text-xs text-slate-400 font-bold uppercase tracking-widest">{masterVocabulary[day].length} items</p>
+                      <p className="text-xs text-slate-400 font-bold uppercase tracking-widest">{vocabulary[day].length} items</p>
                     </div>
                   </div>
                   <ChevronRight size={20} className="text-slate-300 group-hover:text-indigo-500"/>
@@ -212,9 +294,17 @@ export default function App() {
                   {results.filter(r => r.correct).length}<span className="text-slate-200">/</span>{results.length}
                 </div>
                 <div className="space-y-3">
-                  <button onClick={() => startQuiz(selectedDayLabel.includes("Mixed") ? 'all' : selectedDayLabel)} className="w-full bg-slate-900 text-white py-5 rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-black transition-all">
+                  <button onClick={() => startQuiz(selectedDayKey)} className="w-full bg-slate-900 text-white py-5 rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-black transition-all">
                     <RotateCcw size={20} /> Try Again
                   </button>
+                  {results.filter(r => !r.correct).length > 0 && (
+                     <button 
+                        onClick={() => startQuiz('retry-wrong', results.filter(r => !r.correct).map(r => r.item))} 
+                        className="w-full bg-indigo-600 text-white py-5 rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-indigo-700 transition-all"
+                      >
+                       <Layers size={20} /> Retry {results.filter(r => !r.correct).length} Wrong Words
+                     </button>
+                  )}
                   <button onClick={() => setView('menu')} className="w-full py-4 text-slate-400 font-bold hover:text-slate-600">Exit Arena</button>
                 </div>
               </div>
@@ -224,7 +314,14 @@ export default function App() {
                    <button onClick={() => setView('menu')} className="flex items-center gap-2 text-slate-400 font-bold hover:text-slate-600 transition-colors">
                     <ArrowLeft size={18} /> Back
                   </button>
-                  <div className="text-xs font-black text-slate-300 uppercase tracking-[0.3em]">{currentIndex + 1} OF {quizList.length}</div>
+                  <div className="flex items-center gap-4">
+                    {streak > 1 && (
+                      <div className="flex items-center gap-1 text-amber-500 font-bold animate-in fade-in">
+                        <Flame size={14} /> {streak}
+                      </div>
+                    )}
+                    <div className="text-xs font-black text-slate-300 uppercase tracking-[0.3em]">{currentIndex + 1} OF {quizList.length}</div>
+                  </div>
                 </div>
 
                 <div className="h-2 bg-slate-100 rounded-full overflow-hidden shadow-inner">
@@ -299,22 +396,22 @@ export default function App() {
              <div className="flex justify-between items-end">
               <div>
                 <h2 className="text-4xl font-black text-slate-800 tracking-tight">The Ledger</h2>
-                <p className="text-slate-500 font-medium">Full Knowledge Base (Days 1–{Object.keys(masterVocabulary).length})</p>
+                <p className="text-slate-500 font-medium">Full Knowledge Base (Days 1–{Object.keys(vocabulary).length})</p>
               </div>
               <div className="bg-white px-6 py-3 rounded-2xl border border-slate-200 shadow-sm">
-                <span className="text-2xl font-black text-indigo-600">{Object.values(masterVocabulary).flat().length}</span>
+                <span className="text-2xl font-black text-indigo-600">{allWords.length}</span>
               </div>
             </div>
 
             <div className="space-y-10">
-              {Object.keys(masterVocabulary).map(day => (
+              {Object.keys(vocabulary).map(day => (
                 <div key={day} className="space-y-4">
                   <div className="flex items-center gap-4">
                     <h3 className="text-lg font-black text-slate-800 bg-white px-5 py-1.5 rounded-xl border border-slate-200">{day}</h3>
                     <div className="h-px bg-slate-200 flex-1"></div>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    {masterVocabulary[day].map((item, idx) => (
+                    {vocabulary[day].map((item, idx) => (
                       <div key={idx} className="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm hover:border-indigo-100 transition-all flex flex-col justify-between">
                          <div>
                             <div className="flex justify-between items-center mb-1">
