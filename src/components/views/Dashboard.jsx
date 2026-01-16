@@ -86,40 +86,48 @@ export default function Dashboard({ onStartQuiz }) {
             className="space-y-8"
         >
             {/* Hero Section */}
-            <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-gemini-surface to-[#0f1014] border border-white/5 p-8 md:p-12">
+            <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-gemini-surface/80 to-[#0f1014] border border-white/10 p-8 md:p-12 shadow-2xl group relative">
+                {/* Spotlight effect for Hero */}
+                <div
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                    style={{
+                        background: `radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(124, 58, 237, 0.15), transparent 40%)`
+                    }}
+                />
+
                 <div className="relative z-10 max-w-2xl">
-                    <Badge variant="purple" className="mb-6">Ready for battle?</Badge>
+                    <Badge variant="purple" className="mb-6 shadow-glow-purple">Ready for battle?</Badge>
                     <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-white">
-                        The Mastery <span className="text-transparent bg-clip-text bg-gradient-to-r from-gemini-purple to-gemini-cyan">Arena</span>
+                        The Mastery <span className="text-transparent bg-clip-text bg-gradient-to-r from-gemini-purple to-gemini-cyan animate-pulse-glow">Arena</span>
                     </h1>
-                    <p className="text-lg text-slate-400 mb-8 max-w-lg leading-relaxed">
+                    <p className="text-lg text-slate-300 mb-8 max-w-lg leading-relaxed font-medium">
                         Engage in active recall to strengthen your neural pathways. Choose your challenge level below.
                     </p>
                     <div className="flex gap-4">
-                        <Button variant="gradient" size="lg" onClick={() => onStartQuiz('all')}>
+                        <Button variant="gradient" size="lg" onClick={() => onStartQuiz('all')} className="shadow-glow transition-transform hover:scale-105">
                             <Zap className="mr-2" size={20} /> Quick Start
                         </Button>
                     </div>
                 </div>
-                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gemini-purple/10 blur-[100px] rounded-full pointer-events-none" />
-                <Flame className="absolute -bottom-10 -right-10 text-white/5 w-64 h-64 rotate-12" />
+                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gemini-purple/20 blur-[120px] rounded-full pointer-events-none animate-pulse-glow" />
+                <Flame className="absolute -bottom-10 -right-10 text-white/5 w-64 h-64 rotate-12 animate-float" />
             </div>
 
             {/* Main Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {/* Full Sim Card */}
+                {/* Random 30 Test Card */}
                 <Card
                     className="md:col-span-2 flex flex-col md:flex-row items-center justify-between cursor-pointer group"
                     hover={true}
-                    onClick={() => onStartQuiz('all')}
+                    onClick={() => onStartQuiz('random30')}
                 >
                     <div className="flex items-center gap-6">
                         <div className="p-4 bg-gradient-to-br from-amber-500/20 to-orange-600/20 rounded-2xl text-amber-500">
                             <Trophy size={32} />
                         </div>
                         <div>
-                            <h3 className="text-xl font-bold text-slate-100 group-hover:text-amber-400 transition-colors">Full Simulation</h3>
-                            <p className="text-slate-400 text-sm mt-1">Random selection from {allWords.length} terms across all days</p>
+                            <h3 className="text-xl font-bold text-slate-100 group-hover:text-amber-400 transition-colors">Random Test</h3>
+                            <p className="text-slate-400 text-sm mt-1">30 random terms • Quick timed challenge</p>
                         </div>
                     </div>
                     <div className="mt-4 md:mt-0 p-3 bg-white/5 rounded-full group-hover:bg-amber-500/20 transition-colors">

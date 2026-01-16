@@ -9,15 +9,15 @@ export const Button = ({
     isLoading,
     ...props
 }) => {
-    const baseStyles = "inline-flex items-center justify-center rounded-xl font-medium transition-all duration-300 disabled:opacity-50 disabled:pointer-events-none active:scale-95";
+    const baseStyles = "inline-flex items-center justify-center rounded-xl font-medium transition-all duration-300 ease-spring disabled:opacity-50 disabled:pointer-events-none";
 
     const variants = {
-        primary: "bg-gemini-cyan text-gemini-bg hover:bg-cyan-400 hover:shadow-glow shadow-md",
-        secondary: "bg-gemini-surface text-slate-200 hover:bg-gemini-highlight border border-white/5",
+        primary: "bg-gemini-cyan text-gemini-bg hover:bg-cyan-400 hover:shadow-glow shadow-md font-bold tracking-wide",
+        secondary: "bg-gemini-surface/50 text-slate-200 hover:bg-gemini-highlight border border-white/10 hover:border-white/20 backdrop-blur-sm",
         ghost: "text-slate-400 hover:text-white hover:bg-white/5",
-        danger: "bg-rose-500/10 text-rose-400 border border-rose-500/20 hover:bg-rose-500/20",
-        gradient: "bg-gradient-to-r from-gemini-purple to-gemini-cyan text-white shadow-lg hover:shadow-cyan-500/25 border-none",
-        glass: "bg-white/5 backdrop-blur-md border border-white/10 text-white hover:bg-white/10"
+        danger: "bg-rose-500/10 text-rose-400 border border-rose-500/20 hover:bg-rose-500/20 hover:shadow-glow-purple",
+        gradient: "bg-gradient-to-r from-gemini-purple to-gemini-cyan text-white shadow-lg hover:shadow-glow-lg border-none font-bold tracking-wide",
+        glass: "glass text-slate-200 hover:bg-white/10 hover:text-white"
     };
 
     const sizes = {

@@ -12,9 +12,36 @@ const StarryBackground = () => (
 );
 
 export const MainLayout = ({ children, currentView, onViewChange }) => {
+    const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 });
+    const containerRef = React.useRef(null);
+
+    const handleMouseMove = (e) => {
+        if (!containerRef.current) return;
+        const rect = containerRef.current.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        setMousePosition({ x, y });
+    };
+
     return (
-        <div className="min-h-screen font-sans text-slate-100 selection:bg-cyan-500/30">
+        <div
+            ref={containerRef}
+            onMouseMove={handleMouseMove}
+            className="min-h-screen font-sans text-slate-100 selection:bg-cyan-500/30 relative overflow-hidden group/spotlight"
+            style={{
+                '--mouse-x': `${mousePosition.x}px`,
+                '--mouse-y': `${mousePosition.y}px`
+            }}
+        >
             <StarryBackground />
+
+            {/* Global Spotlight Effect */}
+            <div
+                className="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300 opacity-0 group-hover/spotlight:opacity-100"
+                style={{
+                    background: `radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(6, 182, 212, 0.06), transparent 40%)`
+                }}
+            />
 
             {/* Header */}
             <header className="fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center bg-gemini-bg/80 backdrop-blur-md border-b border-white/5">

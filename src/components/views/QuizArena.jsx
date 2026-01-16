@@ -13,11 +13,20 @@ import canvasConfetti from 'canvas-confetti';
 export default function QuizArena({ quizMode, onExit, onRestart }) {
     const { vocabulary, allWords, getStarredWords, toggleStar, isStarred } = useVocabulary();
 
+    // Fixed quiz length for "Random Test" mode
+    const RANDOM_TEST_LENGTH = 30;
+
     // Decide which list to use with defensive guards
     const getWordList = () => {
         if (!quizMode) return [];
         if (Array.isArray(quizMode)) return quizMode.filter(Boolean); // Custom list (retry) - filter out nulls
         if (quizMode === 'all') return Array.isArray(allWords) ? allWords : [];
+        if (quizMode === 'random30') {
+            // Random 30-word test - shuffled subset of all words
+            if (!Array.isArray(allWords) || allWords.length === 0) return [];
+            const shuffled = [...allWords].sort(() => Math.random() - 0.5);
+            return shuffled.slice(0, Math.min(RANDOM_TEST_LENGTH, shuffled.length));
+        }
         if (quizMode === 'starred') {
             const starred = getStarredWords();
             return Array.isArray(starred) ? starred : [];
@@ -57,7 +66,17 @@ export default function QuizArena({ quizMode, onExit, onRestart }) {
     useEffect(() => {
         const handleKeyDown = (e) => {
             if (isFinished) return;
-            if (e.target.tagName === 'INPUT') return; // Don't trigger if typing
+
+            // Allow Enter to advance to next question after feedback is shown
+            // Works even when input is disabled
+            if (e.key === 'Enter' && feedback) {
+                e.preventDefault();
+                nextQuestion();
+                return;
+            }
+
+            // Skip other shortcuts if user is typing in input
+            if (e.target.tagName === 'INPUT') return;
 
             if (e.key.toLowerCase() === 'h') {
                 e.preventDefault();
@@ -70,7 +89,7 @@ export default function QuizArena({ quizMode, onExit, onRestart }) {
         };
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
-    }, [isFinished, provideHint, revealAnswer]);
+    }, [isFinished, feedback, nextQuestion, provideHint, revealAnswer]);
 
     // Submit handler
     const handleSubmit = (e) => {
@@ -163,12 +182,12 @@ export default function QuizArena({ quizMode, onExit, onRestart }) {
             </div>
 
             {/* Progress Bar */}
-            <div className="h-1 bg-slate-800 rounded-full overflow-hidden">
+            <div className="h-1 bg-slate-800/50 rounded-full overflow-hidden backdrop-blur-sm border border-white/5">
                 <motion.div
-                    className="h-full bg-gemini-cyan"
+                    className="h-full bg-gradient-to-r from-gemini-cyan to-gemini-purple shadow-glow"
                     initial={{ width: 0 }}
                     animate={{ width: `${progress}%` }}
-                    transition={{ duration: 0.5 }}
+                    transition={{ duration: 0.8, ease: "spring" }}
                 />
             </div>
 

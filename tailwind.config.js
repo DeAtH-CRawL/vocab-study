@@ -28,6 +28,10 @@ module.exports = {
         'pulse-glow': 'pulseGlow 2s infinite',
         'float': 'float 6s ease-in-out infinite',
       },
+      transitionTimingFunction: {
+        'spring': 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+        'soft': 'cubic-bezier(0.4, 0, 0.2, 1)',
+      },
       keyframes: {
         fadeIn: {
           '0%': { opacity: '0' },
@@ -44,6 +48,10 @@ module.exports = {
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-10px)' },
+        },
+        shimmer: {
+          '0%': { backgroundPosition: '-200% 0' },
+          '100%': { backgroundPosition: '200% 0' },
         }
       }
     },
