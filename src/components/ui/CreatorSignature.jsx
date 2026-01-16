@@ -60,7 +60,7 @@ export const CreatorSignature = () => {
 
                 {/* Text */}
                 <div className="flex flex-col items-end leading-none">
-                    <span className="text-[10px] uppercase tracking-widest text-slate-500 font-bold group-hover:text-slate-400 transition-colors">Engineered by</span>
+                    <span className="text-[10px] uppercase tracking-widest text-slate-500 font-bold group-hover:text-slate-400 transition-colors">Built by</span>
                     <span className="text-sm font-bold text-slate-200 group-hover:text-white transition-colors">Saagar</span>
                 </div>
 
