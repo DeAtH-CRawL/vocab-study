@@ -62,6 +62,20 @@ export default function QuizArena({ quizMode, onExit, onRestart }) {
         }
     }, []);
 
+    // Ref for auto-focus
+    const inputRef = useRef(null);
+
+    // Auto-focus logic: Focus input when question changes or feedback clears
+    useEffect(() => {
+        if (!isFinished && !feedback && inputRef.current) {
+            // Small timeout safely ensures DOM is ready and prevents conflict with animations
+            const timer = setTimeout(() => {
+                inputRef.current?.focus();
+            }, 10);
+            return () => clearTimeout(timer);
+        }
+    }, [currentIndex, feedback, isFinished]);
+
     // Keyboard shortcuts
     useEffect(() => {
         const handleKeyDown = (e) => {
@@ -94,6 +108,9 @@ export default function QuizArena({ quizMode, onExit, onRestart }) {
     // Submit handler
     const handleSubmit = (e) => {
         e.preventDefault();
+        // Prevent submission if already disabled/handled
+        if (e.target.disabled) return;
+
         if (feedback) {
             nextQuestion();
         } else {
@@ -125,34 +142,34 @@ export default function QuizArena({ quizMode, onExit, onRestart }) {
 
         return (
             <div className="max-w-2xl mx-auto text-center space-y-8 animate-fade-in">
-                <Card className="p-12 border-gemini-cyan/20 bg-gradient-to-b from-gemini-surface to-slate-900">
-                    <Badge variant="success" className="mb-6 scale-125">Mission Complete</Badge>
-                    <h2 className="text-6xl font-black text-white mb-2">{Math.round((correctCount / results.length) * 100)}%</h2>
-                    <p className="text-slate-400 mb-8">Accuracy Rating</p>
+                <Card className="p-12 border-gemini-cyan/20 bg-gradient-to-b from-gemini-surface/80 to-slate-900/90 backdrop-blur-xl shadow-glow-lg">
+                    <Badge variant="success" className="mb-6 scale-125 shadow-glow-lg">Mission Complete</Badge>
+                    <h2 className="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-400 mb-2">{Math.round((correctCount / results.length) * 100)}%</h2>
+                    <p className="text-slate-400 mb-8 font-medium tracking-wide">ACCURACY RATING</p>
 
                     <div className="grid grid-cols-2 gap-4 mb-8">
-                        <div className="p-4 bg-emerald-500/10 rounded-2xl border border-emerald-500/20">
-                            <div className="text-2xl font-bold text-emerald-400">{correctCount}</div>
-                            <div className="text-xs uppercase text-emerald-600 font-bold">Correct</div>
+                        <div className="p-4 bg-emerald-500/10 rounded-2xl border border-emerald-500/20 shadow-[0_0_20px_rgba(16,185,129,0.1)]">
+                            <div className="text-3xl font-bold text-emerald-400 mb-1">{correctCount}</div>
+                            <div className="text-[10px] uppercase text-emerald-500 font-black tracking-widest">Correct</div>
                         </div>
-                        <div className="p-4 bg-rose-500/10 rounded-2xl border border-rose-500/20">
-                            <div className="text-2xl font-bold text-rose-400">{results.length - correctCount}</div>
-                            <div className="text-xs uppercase text-rose-600 font-bold">Needs Work</div>
+                        <div className="p-4 bg-rose-500/10 rounded-2xl border border-rose-500/20 shadow-[0_0_20px_rgba(244,63,94,0.1)]">
+                            <div className="text-3xl font-bold text-rose-400 mb-1">{results.length - correctCount}</div>
+                            <div className="text-[10px] uppercase text-rose-500 font-black tracking-widest">Mistakes</div>
                         </div>
                     </div>
 
                     <div className="space-y-3">
-                        <Button variant="primary" className="w-full" onClick={() => onRestart(quizMode)}>
-                            <RotateCcw className="mr-2" size={18} /> Restart Session
+                        <Button variant="primary" className="w-full shadow-glow font-bold tracking-wider" onClick={() => onRestart(quizMode)}>
+                            <RotateCcw className="mr-2" size={18} /> RESTART SESSION
                         </Button>
 
                         {wrongItems.length > 0 && (
-                            <Button variant="gradient" className="w-full" onClick={() => onRestart(wrongItems)}>
-                                <Layers className="mr-2" size={18} /> Retry Errors ({wrongItems.length})
+                            <Button variant="gradient" className="w-full font-bold tracking-wider" onClick={() => onRestart(wrongItems)}>
+                                <Layers className="mr-2" size={18} /> RETRY ERRORS ({wrongItems.length})
                             </Button>
                         )}
 
-                        <Button variant="ghost" className="w-full" onClick={onExit}>Exit Arena</Button>
+                        <Button variant="ghost" className="w-full hover:bg-white/5" onClick={onExit}>RETURN TO BASE</Button>
                     </div>
                 </Card>
             </div>
@@ -222,15 +239,16 @@ export default function QuizArena({ quizMode, onExit, onRestart }) {
                 <form onSubmit={handleSubmit} className="mt-12 space-y-6">
                     <div className="relative">
                         <Input
+                            ref={inputRef}
                             autoFocus
                             value={userInput}
                             onChange={(e) => setUserInput(e.target.value)}
                             placeholder="Type the term..."
                             disabled={!!feedback}
                             className={cn(
-                                "pr-24 font-bold text-2xl tracking-tight",
-                                feedback?.status === 'correct' && "border-emerald-500/50 text-emerald-400 bg-emerald-500/10",
-                                feedback?.status === 'wrong' && "border-rose-500/50 text-rose-400 bg-rose-500/10",
+                                "pr-24 font-bold text-2xl tracking-tight transition-all duration-300",
+                                feedback?.status === 'correct' && "border-emerald-500/50 text-emerald-400 bg-emerald-500/10 shadow-[0_0_30px_rgba(16,185,129,0.2)]",
+                                feedback?.status === 'wrong' && "border-rose-500/50 text-rose-400 bg-rose-500/10 shadow-[0_0_30px_rgba(244,63,94,0.2)]",
                                 feedback?.status === 'close' && "border-amber-500/50 text-amber-400 bg-amber-500/10"
                             )}
                         />

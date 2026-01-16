@@ -2,6 +2,7 @@ import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShieldCheck, Settings } from 'lucide-react';
 import { Button } from '../components/ui/Button';
+import { CreatorSignature } from '../components/ui/CreatorSignature';
 
 const StarryBackground = () => (
     <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
@@ -90,6 +91,8 @@ export const MainLayout = ({ children, currentView, onViewChange }) => {
                     </motion.div>
                 </AnimatePresence>
             </main>
+
+            <CreatorSignature />
         </div>
     );
 };
