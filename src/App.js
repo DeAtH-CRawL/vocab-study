@@ -4,6 +4,7 @@ import { MainLayout } from './layouts/MainLayout';
 import Dashboard from './components/views/Dashboard';
 import QuizArena from './components/views/QuizArena';
 import TheLedger from './components/views/TheLedger';
+import ErrorBoundary from './components/ui/ErrorBoundary';
 
 export default function App() {
   const [currentView, setCurrentView] = useState('menu');
@@ -34,10 +35,12 @@ export default function App() {
   };
 
   return (
-    <VocabularyProvider>
-      <MainLayout currentView={currentView} onViewChange={setCurrentView}>
-        {renderView()}
-      </MainLayout>
-    </VocabularyProvider>
+    <ErrorBoundary>
+      <VocabularyProvider>
+        <MainLayout currentView={currentView} onViewChange={setCurrentView}>
+          {renderView()}
+        </MainLayout>
+      </VocabularyProvider>
+    </ErrorBoundary>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, Flame, Lightbulb, Eye, RotateCcw, Layers } from 'lucide-react';
+import { ArrowLeft, Flame, Lightbulb, Eye, RotateCcw, Layers, Star } from 'lucide-react';
 import { useVocabulary } from '../../contexts/VocabularyContext';
 import { useQuiz } from '../../hooks/useQuiz';
 import { Card } from '../ui/Card';
@@ -13,12 +13,17 @@ import canvasConfetti from 'canvas-confetti';
 export default function QuizArena({ quizMode, onExit, onRestart }) {
     const { vocabulary, allWords, getStarredWords, toggleStar, isStarred } = useVocabulary();
 
-    // Decide which list to use
+    // Decide which list to use with defensive guards
     const getWordList = () => {
-        if (Array.isArray(quizMode)) return quizMode; // Custom list (retry)
-        if (quizMode === 'all') return allWords;
-        if (quizMode === 'starred') return getStarredWords();
-        return vocabulary[quizMode] || [];
+        if (!quizMode) return [];
+        if (Array.isArray(quizMode)) return quizMode.filter(Boolean); // Custom list (retry) - filter out nulls
+        if (quizMode === 'all') return Array.isArray(allWords) ? allWords : [];
+        if (quizMode === 'starred') {
+            const starred = getStarredWords();
+            return Array.isArray(starred) ? starred : [];
+        }
+        const dayWords = vocabulary?.[quizMode];
+        return Array.isArray(dayWords) ? dayWords : [];
     };
 
     const {
@@ -38,10 +43,14 @@ export default function QuizArena({ quizMode, onExit, onRestart }) {
         provideHint
     } = useQuiz();
 
-    // Initialize quiz on mount
+    // Initialize quiz on mount with defensive checks
     useEffect(() => {
         const list = getWordList();
-        if (list.length > 0) startQuiz(list);
+        if (list && Array.isArray(list) && list.length > 0) {
+            startQuiz(list);
+        } else {
+            console.warn('QuizArena: No valid words to start quiz');
+        }
     }, []);
 
     // Keyboard shortcuts
@@ -165,25 +174,29 @@ export default function QuizArena({ quizMode, onExit, onRestart }) {
 
             {/* Main Card */}
             <Card className="min-h-[400px] flex flex-col justify-between p-8 md:p-12 relative">
-                <button
-                    onClick={() => toggleStar(currentWord.term)}
-                    className={cn("absolute top-8 right-8 transition-colors", isStarred(currentWord.term) ? "text-amber-400" : "text-slate-600 hover:text-slate-400")}
-                >
-                    <Star size={24} fill={isStarred(currentWord.term) ? "currentColor" : "none"} />
-                </button>
+                {currentWord?.term && (
+                    <button
+                        onClick={() => toggleStar(currentWord.term)}
+                        className={cn("absolute top-8 right-8 transition-colors", isStarred(currentWord.term) ? "text-amber-400" : "text-slate-600 hover:text-slate-400")}
+                    >
+                        <Star size={24} fill={isStarred(currentWord.term) ? "currentColor" : "none"} />
+                    </button>
+                )}
 
                 <div className="space-y-6">
-                    <Badge>{currentWord.type}</Badge>
+                    {currentWord?.type && <Badge>{currentWord.type}</Badge>}
                     <AnimatePresence mode="wait">
-                        <motion.h2
-                            key={currentWord.term}
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -10 }}
-                            className="text-3xl md:text-4xl font-medium text-slate-100 leading-tight"
-                        >
-                            {currentWord.definition}
-                        </motion.h2>
+                        {currentWord?.definition && (
+                            <motion.h2
+                                key={currentWord.term || 'default'}
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -10 }}
+                                className="text-3xl md:text-4xl font-medium text-slate-100 leading-tight"
+                            >
+                                {currentWord.definition}
+                            </motion.h2>
+                        )}
                     </AnimatePresence>
                 </div>
 
@@ -227,7 +240,7 @@ export default function QuizArena({ quizMode, onExit, onRestart }) {
                             >
                                 <div>
                                     <p className="text-[10px] font-black uppercase tracking-widest opacity-70 mb-1">{feedback.msg}</p>
-                                    <p className="text-xl font-bold">{currentWord.term}</p>
+                                    <p className="text-xl font-bold">{currentWord?.term || 'Unknown'}</p>
                                 </div>
                                 <Button type="submit" variant="secondary" className="shrink-0">Next</Button>
                             </motion.div>

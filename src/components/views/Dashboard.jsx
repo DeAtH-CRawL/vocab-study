@@ -22,9 +22,61 @@ const item = {
 };
 
 export default function Dashboard({ onStartQuiz }) {
-    const { vocabulary, getStarredWords, allWords } = useVocabulary();
+    const { vocabulary, getStarredWords, allWords, isLoading } = useVocabulary();
     const starredWords = getStarredWords();
-    const days = Object.keys(vocabulary).reverse();
+    const days = Object.keys(vocabulary || {}).reverse();
+
+    // Show loading skeleton while data fetches
+    if (isLoading) {
+        return (
+            <div className="space-y-8">
+                {/* Hero skeleton */}
+                <div className="relative overflow-hidden rounded-[2.5rem] bg-gemini-surface/30 border border-white/5 p-8 md:p-12 h-64">
+                    <div className="space-y-4 max-w-md">
+                        <div className="h-6 w-32 bg-gemini-surface/60 rounded-full animate-shimmer" />
+                        <div className="h-12 w-80 bg-gemini-surface/60 rounded-2xl animate-shimmer" style={{ animationDelay: '0.1s' }} />
+                        <div className="h-6 w-64 bg-gemini-surface/40 rounded-lg animate-shimmer" style={{ animationDelay: '0.2s' }} />
+                    </div>
+                    <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-gemini-purple/5 blur-[100px] rounded-full" />
+                </div>
+
+                {/* Cards skeleton */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {/* Full sim skeleton */}
+                    <div className="md:col-span-2 h-24 bg-gemini-surface/30 rounded-2xl border border-white/5 flex items-center p-6 gap-6">
+                        <div className="w-16 h-16 bg-gemini-surface/50 rounded-2xl animate-shimmer" />
+                        <div className="space-y-2 flex-1">
+                            <div className="h-5 w-40 bg-gemini-surface/50 rounded-lg animate-shimmer" />
+                            <div className="h-4 w-60 bg-gemini-surface/30 rounded-lg animate-shimmer" style={{ animationDelay: '0.1s' }} />
+                        </div>
+                    </div>
+                    {/* Starred skeleton */}
+                    <div className="md:col-span-2 h-24 bg-gemini-surface/30 rounded-2xl border border-white/5 flex items-center p-6 gap-6">
+                        <div className="w-16 h-16 bg-gemini-surface/50 rounded-2xl animate-shimmer" style={{ animationDelay: '0.2s' }} />
+                        <div className="space-y-2 flex-1">
+                            <div className="h-5 w-36 bg-gemini-surface/50 rounded-lg animate-shimmer" style={{ animationDelay: '0.3s' }} />
+                            <div className="h-4 w-52 bg-gemini-surface/30 rounded-lg animate-shimmer" style={{ animationDelay: '0.4s' }} />
+                        </div>
+                    </div>
+                    {/* Day cards skeleton */}
+                    {[1, 2, 3, 4].map(i => (
+                        <div
+                            key={i}
+                            className="h-20 bg-gemini-surface/30 rounded-2xl border border-white/5 flex items-center px-5 gap-4"
+                        >
+                            <div className="w-10 h-8 bg-gemini-surface/40 rounded animate-shimmer" style={{ animationDelay: `${0.1 * i}s` }} />
+                            <div className="space-y-2 flex-1">
+                                <div className="h-4 w-20 bg-gemini-surface/50 rounded animate-shimmer" style={{ animationDelay: `${0.15 * i}s` }} />
+                                <div className="h-3 w-16 bg-gemini-surface/30 rounded animate-shimmer" style={{ animationDelay: `${0.2 * i}s` }} />
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        );
+    }
+
+
 
     return (
         <motion.div
@@ -110,7 +162,7 @@ export default function Dashboard({ onStartQuiz }) {
                                     </span>
                                     <div>
                                         <h4 className="font-bold text-slate-200 group-hover:text-white">{day}</h4>
-                                        <span className="text-xs text-slate-500 font-medium uppercase tracking-wider">{vocabulary[day].length} TERMS</span>
+                                        <span className="text-xs text-slate-500 font-medium uppercase tracking-wider">{vocabulary[day]?.length || 0} TERMS</span>
                                     </div>
                                 </div>
                                 <ChevronRight size={18} className="text-slate-600 group-hover:text-white group-hover:translate-x-1 transition-transform" />

@@ -1,0 +1,1254 @@
+{
+    "version": 1,
+    "lastUpdated": "2026-01-16",
+    "days": [
+        {
+            "dayNumber": 1,
+            "createdAt": "2026-01-01",
+            "items": [
+                {
+                    "id": "d01-w01",
+                    "term": "Lucid",
+                    "definition": "Expressed clearly; easy to understand",
+                    "type": "Word"
+                },
+                {
+                    "id": "d01-w02",
+                    "term": "Inevitable",
+                    "definition": "Certain to happen; unavoidable",
+                    "type": "Word"
+                },
+                {
+                    "id": "d01-w03",
+                    "term": "Meticulous",
+                    "definition": "Extremely careful; paying attention to every detail",
+                    "type": "Word"
+                },
+                {
+                    "id": "d01-w04",
+                    "term": "Tenacious",
+                    "definition": "Persistent; refusing to give up",
+                    "type": "Word"
+                },
+                {
+                    "id": "d01-w05",
+                    "term": "Ambiguous",
+                    "definition": "Unclear; open to more than one interpretation",
+                    "type": "Word"
+                },
+                {
+                    "id": "d01-w06",
+                    "term": "Conspicuous",
+                    "definition": "Clearly visible; standing out",
+                    "type": "Word"
+                },
+                {
+                    "id": "d01-w07",
+                    "term": "Pragmatic",
+                    "definition": "Sensible and realistic; practical",
+                    "type": "Word"
+                },
+                {
+                    "id": "d01-w08",
+                    "term": "Formidable",
+                    "definition": "Inspiring fear or respect; powerful",
+                    "type": "Word"
+                },
+                {
+                    "id": "d01-w09",
+                    "term": "Scrutinize",
+                    "definition": "Examine very closely and thoroughly",
+                    "type": "Word"
+                },
+                {
+                    "id": "d01-w10",
+                    "term": "Resilient",
+                    "definition": "Able to recover quickly from difficulties",
+                    "type": "Word"
+                },
+                {
+                    "id": "d01-w11",
+                    "term": "Irrational",
+                    "definition": "Not logical or reasonable",
+                    "type": "Word"
+                },
+                {
+                    "id": "d01-w12",
+                    "term": "Astute",
+                    "definition": "Accurately assessing situations to one's advantage",
+                    "type": "Word"
+                },
+                {
+                    "id": "d01-i01",
+                    "term": "Break the ice",
+                    "definition": "Start conversation in a tense situation",
+                    "type": "Idiom"
+                },
+                {
+                    "id": "d01-i02",
+                    "term": "Once in a blue moon",
+                    "definition": "Something that happens very rarely",
+                    "type": "Idiom"
+                },
+                {
+                    "id": "d01-i03",
+                    "term": "Blessing in disguise",
+                    "definition": "A misfortune that results in something good",
+                    "type": "Idiom"
+                }
+            ]
+        },
+        {
+            "dayNumber": 2,
+            "createdAt": "2026-01-02",
+            "items": [
+                {
+                    "id": "d02-w01",
+                    "term": "Erratic",
+                    "definition": "Unpredictable; irregular",
+                    "type": "Word"
+                },
+                {
+                    "id": "d02-w02",
+                    "term": "Diligent",
+                    "definition": "Showing care and effort in one's work",
+                    "type": "Word"
+                },
+                {
+                    "id": "d02-w03",
+                    "term": "Alleviate",
+                    "definition": "Make suffering or a problem less severe",
+                    "type": "Word"
+                },
+                {
+                    "id": "d02-w04",
+                    "term": "Vindicate",
+                    "definition": "Clear someone of blame or suspicion",
+                    "type": "Word"
+                },
+                {
+                    "id": "d02-w05",
+                    "term": "Impulsive",
+                    "definition": "Acting without forethought",
+                    "type": "Word"
+                },
+                {
+                    "id": "d02-w06",
+                    "term": "Plausible",
+                    "definition": "Seeming reasonable or probable",
+                    "type": "Word"
+                },
+                {
+                    "id": "d02-w07",
+                    "term": "Hostile",
+                    "definition": "Unfriendly; antagonistic",
+                    "type": "Word"
+                },
+                {
+                    "id": "d02-w08",
+                    "term": "Stern",
+                    "definition": "Serious and strict",
+                    "type": "Word"
+                },
+                {
+                    "id": "d02-w09",
+                    "term": "Reluctant",
+                    "definition": "Unwilling and hesitant",
+                    "type": "Word"
+                },
+                {
+                    "id": "d02-w10",
+                    "term": "Versatile",
+                    "definition": "Able to adapt to many functions",
+                    "type": "Word"
+                },
+                {
+                    "id": "d02-w11",
+                    "term": "Benevolent",
+                    "definition": "Kind and well-meaning",
+                    "type": "Word"
+                },
+                {
+                    "id": "d02-w12",
+                    "term": "Provoke",
+                    "definition": "Stimulate a reaction or emotion",
+                    "type": "Word"
+                },
+                {
+                    "id": "d02-i01",
+                    "term": "Burn the midnight oil",
+                    "definition": "Work or study late at night",
+                    "type": "Idiom"
+                },
+                {
+                    "id": "d02-i02",
+                    "term": "Hit the nail on the head",
+                    "definition": "Describe exactly the problem",
+                    "type": "Idiom"
+                },
+                {
+                    "id": "d02-i03",
+                    "term": "Costs an arm and a leg",
+                    "definition": "Very expensive",
+                    "type": "Idiom"
+                }
+            ]
+        },
+        {
+            "dayNumber": 3,
+            "createdAt": "2026-01-03",
+            "items": [
+                {
+                    "id": "d03-w01",
+                    "term": "Impeccable",
+                    "definition": "Faultless; perfect",
+                    "type": "Word"
+                },
+                {
+                    "id": "d03-w02",
+                    "term": "Adamant",
+                    "definition": "Refusing to change one's mind",
+                    "type": "Word"
+                },
+                {
+                    "id": "d03-w03",
+                    "term": "Scrupulous",
+                    "definition": "Very careful and ethical",
+                    "type": "Word"
+                },
+                {
+                    "id": "d03-w04",
+                    "term": "Exceptional",
+                    "definition": "Unusually good",
+                    "type": "Word"
+                },
+                {
+                    "id": "d03-w05",
+                    "term": "Frivolous",
+                    "definition": "Not serious or important",
+                    "type": "Word"
+                },
+                {
+                    "id": "d03-w06",
+                    "term": "Contemplate",
+                    "definition": "Think deeply",
+                    "type": "Word"
+                },
+                {
+                    "id": "d03-w07",
+                    "term": "Repercussion",
+                    "definition": "Unintended consequence",
+                    "type": "Word"
+                },
+                {
+                    "id": "d03-w08",
+                    "term": "Consequence",
+                    "definition": "Result of an action",
+                    "type": "Word"
+                },
+                {
+                    "id": "d03-w09",
+                    "term": "Deteriorate",
+                    "definition": "Become worse",
+                    "type": "Word"
+                },
+                {
+                    "id": "d03-w10",
+                    "term": "Meander",
+                    "definition": "Follow a winding course",
+                    "type": "Word"
+                },
+                {
+                    "id": "d03-w11",
+                    "term": "Perpetuate",
+                    "definition": "Make something continue indefinitely",
+                    "type": "Word"
+                },
+                {
+                    "id": "d03-w12",
+                    "term": "Incessant",
+                    "definition": "Never stopping; continuous",
+                    "type": "Word"
+                },
+                {
+                    "id": "d03-i01",
+                    "term": "In the nick of time",
+                    "definition": "Just in time",
+                    "type": "Idiom"
+                },
+                {
+                    "id": "d03-i02",
+                    "term": "Piece of cake",
+                    "definition": "Very easy task",
+                    "type": "Idiom"
+                },
+                {
+                    "id": "d03-i03",
+                    "term": "Cakewalk",
+                    "definition": "Very easy task",
+                    "type": "Idiom"
+                }
+            ]
+        },
+        {
+            "dayNumber": 4,
+            "createdAt": "2026-01-04",
+            "items": [
+                {
+                    "id": "d04-w01",
+                    "term": "Detrimental",
+                    "definition": "Harmful",
+                    "type": "Word"
+                },
+                {
+                    "id": "d04-w02",
+                    "term": "Serene",
+                    "definition": "Calm and peaceful",
+                    "type": "Word"
+                },
+                {
+                    "id": "d04-w03",
+                    "term": "Furious",
+                    "definition": "Extremely angry",
+                    "type": "Word"
+                },
+                {
+                    "id": "d04-w04",
+                    "term": "Elated",
+                    "definition": "Very happy",
+                    "type": "Word"
+                },
+                {
+                    "id": "d04-w05",
+                    "term": "Candid",
+                    "definition": "Honest and straightforward",
+                    "type": "Word"
+                },
+                {
+                    "id": "d04-w06",
+                    "term": "Irrefutable",
+                    "definition": "Impossible to deny",
+                    "type": "Word"
+                },
+                {
+                    "id": "d04-w07",
+                    "term": "Futile",
+                    "definition": "Pointless",
+                    "type": "Word"
+                },
+                {
+                    "id": "d04-w08",
+                    "term": "Reconcile",
+                    "definition": "Restore friendly relations",
+                    "type": "Word"
+                },
+                {
+                    "id": "d04-w09",
+                    "term": "Apathetic",
+                    "definition": "Showing no interest",
+                    "type": "Word"
+                },
+                {
+                    "id": "d04-w10",
+                    "term": "Tranquil",
+                    "definition": "Calm and undisturbed",
+                    "type": "Word"
+                },
+                {
+                    "id": "d04-w11",
+                    "term": "Belligerent",
+                    "definition": "Hostile and aggressive",
+                    "type": "Word"
+                },
+                {
+                    "id": "d04-w12",
+                    "term": "Profound",
+                    "definition": "Very deep or insightful",
+                    "type": "Word"
+                },
+                {
+                    "id": "d04-i01",
+                    "term": "Let the cat out of the bag",
+                    "definition": "Reveal a secret",
+                    "type": "Idiom"
+                },
+                {
+                    "id": "d04-i02",
+                    "term": "Spill the beans",
+                    "definition": "Reveal secret information",
+                    "type": "Idiom"
+                },
+                {
+                    "id": "d04-i03",
+                    "term": "Between a rock and a hard place",
+                    "definition": "In a difficult situation with no good options",
+                    "type": "Idiom"
+                }
+            ]
+        },
+        {
+            "dayNumber": 5,
+            "createdAt": "2026-01-05",
+            "items": [
+                {
+                    "id": "d05-w01",
+                    "term": "Notorious",
+                    "definition": "Famous for something bad",
+                    "type": "Word"
+                },
+                {
+                    "id": "d05-w02",
+                    "term": "Intricate",
+                    "definition": "Very complex",
+                    "type": "Word"
+                },
+                {
+                    "id": "d05-w03",
+                    "term": "Rigorous",
+                    "definition": "Extremely thorough",
+                    "type": "Word"
+                },
+                {
+                    "id": "d05-w04",
+                    "term": "Reclusive",
+                    "definition": "Avoiding people",
+                    "type": "Word"
+                },
+                {
+                    "id": "d05-w05",
+                    "term": "Transient",
+                    "definition": "Temporary",
+                    "type": "Word"
+                },
+                {
+                    "id": "d05-w06",
+                    "term": "Subtle",
+                    "definition": "Delicate or not obvious",
+                    "type": "Word"
+                },
+                {
+                    "id": "d05-w07",
+                    "term": "Prudent",
+                    "definition": "Careful and wise",
+                    "type": "Word"
+                },
+                {
+                    "id": "d05-w08",
+                    "term": "Feasible",
+                    "definition": "Possible and practical",
+                    "type": "Word"
+                },
+                {
+                    "id": "d05-w09",
+                    "term": "Ostracize",
+                    "definition": "Exclude from a group",
+                    "type": "Word"
+                },
+                {
+                    "id": "d05-w10",
+                    "term": "Delegate",
+                    "definition": "Assign responsibility to another",
+                    "type": "Word"
+                },
+                {
+                    "id": "d05-w11",
+                    "term": "Succinct",
+                    "definition": "Briefly and clearly expressed",
+                    "type": "Word"
+                },
+                {
+                    "id": "d05-w12",
+                    "term": "Prolific",
+                    "definition": "Producing much output",
+                    "type": "Word"
+                },
+                {
+                    "id": "d05-i01",
+                    "term": "Turn a blind eye",
+                    "definition": "Ignore knowingly",
+                    "type": "Idiom"
+                },
+                {
+                    "id": "d05-i02",
+                    "term": "On cloud nine",
+                    "definition": "Extremely happy",
+                    "type": "Idiom"
+                },
+                {
+                    "id": "d05-i03",
+                    "term": "Call it a day",
+                    "definition": "Stop working",
+                    "type": "Idiom"
+                }
+            ]
+        },
+        {
+            "dayNumber": 6,
+            "createdAt": "2026-01-06",
+            "items": [
+                {
+                    "id": "d06-w01",
+                    "term": "Eloquent",
+                    "definition": "Fluent and persuasive",
+                    "type": "Word"
+                },
+                {
+                    "id": "d06-w02",
+                    "term": "Exuberant",
+                    "definition": "Full of energy",
+                    "type": "Word"
+                },
+                {
+                    "id": "d06-w03",
+                    "term": "Obsolete",
+                    "definition": "Outdated",
+                    "type": "Word"
+                },
+                {
+                    "id": "d06-w04",
+                    "term": "Pensive",
+                    "definition": "Deep in thought",
+                    "type": "Word"
+                },
+                {
+                    "id": "d06-w05",
+                    "term": "Altruistic",
+                    "definition": "Selfless concern for others",
+                    "type": "Word"
+                },
+                {
+                    "id": "d06-w06",
+                    "term": "Gregarious",
+                    "definition": "Sociable",
+                    "type": "Word"
+                },
+                {
+                    "id": "d06-w07",
+                    "term": "Enigma",
+                    "definition": "Mystery",
+                    "type": "Word"
+                },
+                {
+                    "id": "d06-w08",
+                    "term": "Mitigate",
+                    "definition": "Reduce severity",
+                    "type": "Word"
+                },
+                {
+                    "id": "d06-w09",
+                    "term": "Cynical",
+                    "definition": "Distrustful of motives",
+                    "type": "Word"
+                },
+                {
+                    "id": "d06-w10",
+                    "term": "Lethargic",
+                    "definition": "Sluggish",
+                    "type": "Word"
+                },
+                {
+                    "id": "d06-w11",
+                    "term": "Superfluous",
+                    "definition": "Unnecessary",
+                    "type": "Word"
+                },
+                {
+                    "id": "d06-w12",
+                    "term": "Venerable",
+                    "definition": "Respected due to age or wisdom",
+                    "type": "Word"
+                },
+                {
+                    "id": "d06-i01",
+                    "term": "Under the weather",
+                    "definition": "Feeling unwell",
+                    "type": "Idiom"
+                },
+                {
+                    "id": "d06-i02",
+                    "term": "The elephant in the room",
+                    "definition": "Ignored major issue",
+                    "type": "Idiom"
+                },
+                {
+                    "id": "d06-i03",
+                    "term": "A dime a dozen",
+                    "definition": "Very common",
+                    "type": "Idiom"
+                }
+            ]
+        },
+        {
+            "dayNumber": 7,
+            "createdAt": "2026-01-07",
+            "items": [
+                {
+                    "id": "d07-w01",
+                    "term": "Abundant",
+                    "definition": "Plentiful",
+                    "type": "Word"
+                },
+                {
+                    "id": "d07-w02",
+                    "term": "Coherent",
+                    "definition": "Logical and consistent",
+                    "type": "Word"
+                },
+                {
+                    "id": "d07-w03",
+                    "term": "Deficit",
+                    "definition": "Shortfall",
+                    "type": "Word"
+                },
+                {
+                    "id": "d07-w04",
+                    "term": "Empathetic",
+                    "definition": "Understanding others' feelings",
+                    "type": "Word"
+                },
+                {
+                    "id": "d07-w05",
+                    "term": "Hypothetical",
+                    "definition": "Supposed, theoretical",
+                    "type": "Word"
+                },
+                {
+                    "id": "d07-w06",
+                    "term": "Inefficient",
+                    "definition": "Wasteful or unproductive",
+                    "type": "Word"
+                },
+                {
+                    "id": "d07-w07",
+                    "term": "Lucrative",
+                    "definition": "Profitable",
+                    "type": "Word"
+                },
+                {
+                    "id": "d07-w08",
+                    "term": "Novel",
+                    "definition": "New or unusual",
+                    "type": "Word"
+                },
+                {
+                    "id": "d07-w09",
+                    "term": "Obscure",
+                    "definition": "Unknown or unclear",
+                    "type": "Word"
+                },
+                {
+                    "id": "d07-w10",
+                    "term": "Paramount",
+                    "definition": "Most important",
+                    "type": "Word"
+                },
+                {
+                    "id": "d07-w11",
+                    "term": "Relinquish",
+                    "definition": "Give up",
+                    "type": "Word"
+                },
+                {
+                    "id": "d07-w12",
+                    "term": "Surmount",
+                    "definition": "Overcome",
+                    "type": "Word"
+                },
+                {
+                    "id": "d07-i01",
+                    "term": "Back to the drawing board",
+                    "definition": "Start again",
+                    "type": "Idiom"
+                },
+                {
+                    "id": "d07-i02",
+                    "term": "Barking up the wrong tree",
+                    "definition": "Wrong direction",
+                    "type": "Idiom"
+                },
+                {
+                    "id": "d07-i03",
+                    "term": "Best of both worlds",
+                    "definition": "Enjoying two advantages",
+                    "type": "Idiom"
+                }
+            ]
+        },
+        {
+            "dayNumber": 8,
+            "createdAt": "2026-01-08",
+            "items": [
+                {
+                    "id": "d08-w01",
+                    "term": "Advocate",
+                    "definition": "Supporter",
+                    "type": "Word"
+                },
+                {
+                    "id": "d08-w02",
+                    "term": "Ambivalent",
+                    "definition": "Mixed feelings",
+                    "type": "Word"
+                },
+                {
+                    "id": "d08-w03",
+                    "term": "Complacent",
+                    "definition": "Self-satisfied",
+                    "type": "Word"
+                },
+                {
+                    "id": "d08-w04",
+                    "term": "Discreet",
+                    "definition": "Careful and tactful",
+                    "type": "Word"
+                },
+                {
+                    "id": "d08-w05",
+                    "term": "Exacerbate",
+                    "definition": "Make worse",
+                    "type": "Word"
+                },
+                {
+                    "id": "d08-w06",
+                    "term": "Incentive",
+                    "definition": "Motivation",
+                    "type": "Word"
+                },
+                {
+                    "id": "d08-w07",
+                    "term": "Pervasive",
+                    "definition": "Widespread",
+                    "type": "Word"
+                },
+                {
+                    "id": "d08-w08",
+                    "term": "Inherent",
+                    "definition": "Existing naturally",
+                    "type": "Word"
+                },
+                {
+                    "id": "d08-w09",
+                    "term": "Retrospect",
+                    "definition": "Review of the past",
+                    "type": "Word"
+                },
+                {
+                    "id": "d08-w10",
+                    "term": "Speculate",
+                    "definition": "Guess without evidence",
+                    "type": "Word"
+                },
+                {
+                    "id": "d08-w11",
+                    "term": "Tangible",
+                    "definition": "Clear and real",
+                    "type": "Word"
+                },
+                {
+                    "id": "d08-w12",
+                    "term": "Unprecedented",
+                    "definition": "Never done before",
+                    "type": "Word"
+                },
+                {
+                    "id": "d08-i01",
+                    "term": "Bite off more than you can chew",
+                    "definition": "Take on too much",
+                    "type": "Idiom"
+                },
+                {
+                    "id": "d08-i02",
+                    "term": "The ball is in your court",
+                    "definition": "Your decision",
+                    "type": "Idiom"
+                },
+                {
+                    "id": "d08-i03",
+                    "term": "Long story short",
+                    "definition": "Get to the point",
+                    "type": "Idiom"
+                }
+            ]
+        },
+        {
+            "dayNumber": 9,
+            "createdAt": "2026-01-09",
+            "items": [
+                {
+                    "id": "d09-w01",
+                    "term": "Arbitrary",
+                    "definition": "Random",
+                    "type": "Word"
+                },
+                {
+                    "id": "d09-w02",
+                    "term": "Bureaucracy",
+                    "definition": "Administrative system",
+                    "type": "Word"
+                },
+                {
+                    "id": "d09-w03",
+                    "term": "Catalyst",
+                    "definition": "Trigger",
+                    "type": "Word"
+                },
+                {
+                    "id": "d09-w04",
+                    "term": "Enforce",
+                    "definition": "Compel obedience",
+                    "type": "Word"
+                },
+                {
+                    "id": "d09-w05",
+                    "term": "Hierarchy",
+                    "definition": "Ranked system",
+                    "type": "Word"
+                },
+                {
+                    "id": "d09-w06",
+                    "term": "Imminent",
+                    "definition": "About to happen",
+                    "type": "Word"
+                },
+                {
+                    "id": "d09-w07",
+                    "term": "Infrastructure",
+                    "definition": "Basic facilities",
+                    "type": "Word"
+                },
+                {
+                    "id": "d09-w08",
+                    "term": "Mandate",
+                    "definition": "Official order",
+                    "type": "Word"
+                },
+                {
+                    "id": "d09-w09",
+                    "term": "Negligible",
+                    "definition": "Insignificant",
+                    "type": "Word"
+                },
+                {
+                    "id": "d09-w10",
+                    "term": "Protocol",
+                    "definition": "Official procedure",
+                    "type": "Word"
+                },
+                {
+                    "id": "d09-w11",
+                    "term": "Ratify",
+                    "definition": "Formally approve",
+                    "type": "Word"
+                },
+                {
+                    "id": "d09-w12",
+                    "term": "Viable",
+                    "definition": "Feasible",
+                    "type": "Word"
+                },
+                {
+                    "id": "d09-i01",
+                    "term": "Red tape",
+                    "definition": "Excessive rules",
+                    "type": "Idiom"
+                },
+                {
+                    "id": "d09-i02",
+                    "term": "Jump through hoops",
+                    "definition": "Face difficulties",
+                    "type": "Idiom"
+                },
+                {
+                    "id": "d09-i03",
+                    "term": "Bottom line",
+                    "definition": "Most important point",
+                    "type": "Idiom"
+                }
+            ]
+        },
+        {
+            "dayNumber": 10,
+            "createdAt": "2026-01-10",
+            "items": [
+                {
+                    "id": "d10-w01",
+                    "term": "Appease",
+                    "definition": "Pacify",
+                    "type": "Word"
+                },
+                {
+                    "id": "d10-w02",
+                    "term": "Assertive",
+                    "definition": "Confident",
+                    "type": "Word"
+                },
+                {
+                    "id": "d10-w03",
+                    "term": "Autonomous",
+                    "definition": "Independent",
+                    "type": "Word"
+                },
+                {
+                    "id": "d10-w04",
+                    "term": "Coalition",
+                    "definition": "Alliance",
+                    "type": "Word"
+                },
+                {
+                    "id": "d10-w05",
+                    "term": "Condone",
+                    "definition": "Allow wrongdoing",
+                    "type": "Word"
+                },
+                {
+                    "id": "d10-w06",
+                    "term": "Consensus",
+                    "definition": "General agreement",
+                    "type": "Word"
+                },
+                {
+                    "id": "d10-w07",
+                    "term": "Discrepancy",
+                    "definition": "Difference",
+                    "type": "Word"
+                },
+                {
+                    "id": "d10-w08",
+                    "term": "Hegemony",
+                    "definition": "Dominance",
+                    "type": "Word"
+                },
+                {
+                    "id": "d10-w09",
+                    "term": "Impose",
+                    "definition": "Force upon",
+                    "type": "Word"
+                },
+                {
+                    "id": "d10-w10",
+                    "term": "Oversight",
+                    "definition": "Supervision or mistake",
+                    "type": "Word"
+                },
+                {
+                    "id": "d10-w11",
+                    "term": "Solidarity",
+                    "definition": "Unity",
+                    "type": "Word"
+                },
+                {
+                    "id": "d10-w12",
+                    "term": "Unanimous",
+                    "definition": "Complete agreement",
+                    "type": "Word"
+                },
+                {
+                    "id": "d10-i01",
+                    "term": "Cut to the chase",
+                    "definition": "Get to the point",
+                    "type": "Idiom"
+                },
+                {
+                    "id": "d10-i02",
+                    "term": "Through thick and thin",
+                    "definition": "Always",
+                    "type": "Idiom"
+                },
+                {
+                    "id": "d10-i03",
+                    "term": "Grain of salt",
+                    "definition": "Skeptical view",
+                    "type": "Idiom"
+                }
+            ]
+        },
+        {
+            "dayNumber": 11,
+            "createdAt": "2026-01-11",
+            "items": [
+                {
+                    "id": "d11-w01",
+                    "term": "Anachronism",
+                    "definition": "Belonging to another time",
+                    "type": "Word"
+                },
+                {
+                    "id": "d11-w02",
+                    "term": "Capricious",
+                    "definition": "Unpredictable",
+                    "type": "Word"
+                },
+                {
+                    "id": "d11-w03",
+                    "term": "Enervate",
+                    "definition": "Weaken",
+                    "type": "Word"
+                },
+                {
+                    "id": "d11-w04",
+                    "term": "Ephemeral",
+                    "definition": "Short-lived",
+                    "type": "Word"
+                },
+                {
+                    "id": "d11-w05",
+                    "term": "Equivocal",
+                    "definition": "Ambiguous",
+                    "type": "Word"
+                },
+                {
+                    "id": "d11-w06",
+                    "term": "Loquacious",
+                    "definition": "Talkative",
+                    "type": "Word"
+                },
+                {
+                    "id": "d11-w07",
+                    "term": "Magnanimous",
+                    "definition": "Generous",
+                    "type": "Word"
+                },
+                {
+                    "id": "d11-w08",
+                    "term": "Obsequious",
+                    "definition": "Excessively obedient",
+                    "type": "Word"
+                },
+                {
+                    "id": "d11-w09",
+                    "term": "Paradigm",
+                    "definition": "Model or example",
+                    "type": "Word"
+                },
+                {
+                    "id": "d11-w10",
+                    "term": "Precipitate",
+                    "definition": "Cause suddenly",
+                    "type": "Word"
+                },
+                {
+                    "id": "d11-w11",
+                    "term": "Soporific",
+                    "definition": "Sleep-inducing",
+                    "type": "Word"
+                },
+                {
+                    "id": "d11-w12",
+                    "term": "Vacillate",
+                    "definition": "Be indecisive",
+                    "type": "Word"
+                },
+                {
+                    "id": "d11-i01",
+                    "term": "Throw down the gauntlet",
+                    "definition": "Issue a challenge",
+                    "type": "Idiom"
+                },
+                {
+                    "id": "d11-i02",
+                    "term": "Steal someone's thunder",
+                    "definition": "Take credit",
+                    "type": "Idiom"
+                },
+                {
+                    "id": "d11-i03",
+                    "term": "Sword of Damocles",
+                    "definition": "Impending danger",
+                    "type": "Idiom"
+                }
+            ]
+        },
+        {
+            "dayNumber": 12,
+            "createdAt": "2026-01-12",
+            "items": [
+                {
+                    "id": "d12-w01",
+                    "term": "Abnegation",
+                    "definition": "Renouncing something",
+                    "type": "Word"
+                },
+                {
+                    "id": "d12-w02",
+                    "term": "Castigate",
+                    "definition": "Criticize harshly",
+                    "type": "Word"
+                },
+                {
+                    "id": "d12-w03",
+                    "term": "Cogent",
+                    "definition": "Clear and convincing",
+                    "type": "Word"
+                },
+                {
+                    "id": "d12-w04",
+                    "term": "Diatribe",
+                    "definition": "Bitter verbal attack",
+                    "type": "Word"
+                },
+                {
+                    "id": "d12-w05",
+                    "term": "Esoteric",
+                    "definition": "Understood by few",
+                    "type": "Word"
+                },
+                {
+                    "id": "d12-w06",
+                    "term": "Fastidious",
+                    "definition": "Very detail-oriented",
+                    "type": "Word"
+                },
+                {
+                    "id": "d12-w07",
+                    "term": "Inculcate",
+                    "definition": "Instill gradually",
+                    "type": "Word"
+                },
+                {
+                    "id": "d12-w08",
+                    "term": "Maverick",
+                    "definition": "Independent thinker",
+                    "type": "Word"
+                },
+                {
+                    "id": "d12-w09",
+                    "term": "Obdurate",
+                    "definition": "Stubborn",
+                    "type": "Word"
+                },
+                {
+                    "id": "d12-w10",
+                    "term": "Pejorative",
+                    "definition": "Disapproving",
+                    "type": "Word"
+                },
+                {
+                    "id": "d12-w11",
+                    "term": "Quixotic",
+                    "definition": "Unrealistically idealistic",
+                    "type": "Word"
+                },
+                {
+                    "id": "d12-w12",
+                    "term": "Ubiquitous",
+                    "definition": "Found everywhere",
+                    "type": "Word"
+                },
+                {
+                    "id": "d12-i01",
+                    "term": "Achilles' heel",
+                    "definition": "Weak point",
+                    "type": "Idiom"
+                },
+                {
+                    "id": "d12-i02",
+                    "term": "Chew the cud",
+                    "definition": "Think deeply",
+                    "type": "Idiom"
+                },
+                {
+                    "id": "d12-i03",
+                    "term": "Pyrrhic victory",
+                    "definition": "Victory at great cost",
+                    "type": "Idiom"
+                }
+            ]
+        },
+        {
+            "dayNumber": 13,
+            "createdAt": "2026-01-13",
+            "items": [
+                {
+                    "id": "d13-w01",
+                    "term": "Ameliorate",
+                    "definition": "To make something bad better or more tolerable",
+                    "type": "Word"
+                },
+                {
+                    "id": "d13-w02",
+                    "term": "Equanimity",
+                    "definition": "Mental calmness and composure, especially in difficulty",
+                    "type": "Word"
+                },
+                {
+                    "id": "d13-w03",
+                    "term": "Impassive",
+                    "definition": "Not feeling or showing emotion; expressionless",
+                    "type": "Word"
+                },
+                {
+                    "id": "d13-w04",
+                    "term": "Languid",
+                    "definition": "Slow and relaxed; lacking energy",
+                    "type": "Word"
+                },
+                {
+                    "id": "d13-w05",
+                    "term": "Nonchalant",
+                    "definition": "Casually calm and relaxed; unconcerned",
+                    "type": "Word"
+                },
+                {
+                    "id": "d13-w06",
+                    "term": "Pugnacious",
+                    "definition": "Eager or quick to argue or fight",
+                    "type": "Word"
+                },
+                {
+                    "id": "d13-w07",
+                    "term": "Reticent",
+                    "definition": "Not revealing thoughts readily; reserved",
+                    "type": "Word"
+                },
+                {
+                    "id": "d13-w08",
+                    "term": "Sycophant",
+                    "definition": "Person who acts submissively to gain advantage",
+                    "type": "Word"
+                },
+                {
+                    "id": "d13-w09",
+                    "term": "Trepidation",
+                    "definition": "Feeling of fear about something that may happen",
+                    "type": "Word"
+                },
+                {
+                    "id": "d13-w10",
+                    "term": "Vociferous",
+                    "definition": "Expressing opinions loudly or forcefully",
+                    "type": "Word"
+                },
+                {
+                    "id": "d13-w11",
+                    "term": "Perfunctory",
+                    "definition": "Carried out with minimum effort; hasty",
+                    "type": "Word"
+                },
+                {
+                    "id": "d13-w12",
+                    "term": "Surreptitious",
+                    "definition": "Kept secret because it would not be approved of",
+                    "type": "Word"
+                },
+                {
+                    "id": "d13-i01",
+                    "term": "The Midas Touch",
+                    "definition": "Ability to turn any venture into great success",
+                    "type": "Idiom"
+                },
+                {
+                    "id": "d13-i02",
+                    "term": "A Paper Tiger",
+                    "definition": "Something that appears powerful but is actually weak",
+                    "type": "Idiom"
+                },
+                {
+                    "id": "d13-i03",
+                    "term": "Steer Clear Of",
+                    "definition": "Avoid or keep away from someone or something",
+                    "type": "Idiom"
+                }
+            ]
+        }
+    ]
+}
