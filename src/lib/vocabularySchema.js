@@ -249,6 +249,8 @@ export function logValidationResult(result) {
     }
 
     if (result.valid && result.stats) {
-        console.log(`Vocabulary loaded: ${result.stats.totalDays} days, ${result.stats.totalItems} items`);
+        if (process.env.NODE_ENV === 'development') {
+            console.log(`Vocabulary loaded: ${result.stats.totalDays} days, ${result.stats.totalItems} items`);
+        }
     }
 }

@@ -4,20 +4,10 @@ import { ShieldCheck } from 'lucide-react';
 import { Button } from '../components/ui/Button';
 import { CreatorSignature } from '../components/ui/CreatorSignature';
 
-// Lazy load Three.js component
-const NeuralField = React.lazy(() => import('../components/background/NeuralField').then(module => ({ default: module.NeuralField })));
+import { AmbientBackground } from '../components/background/AmbientBackground';
 
 const StarryBackground = memo(() => (
-    <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-gemini-purple/20 rounded-full blur-[120px] animate-pulse-glow" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[30%] h-[30%] bg-gemini-cyan/10 rounded-full blur-[100px] animate-pulse-glow" style={{ animationDelay: '1s' }} />
-        <div className="absolute top-[20%] right-[20%] w-[20%] h-[20%] bg-gemini-pink/5 rounded-full blur-[80px]" />
-
-        {/* WebGL Layer with CSS Fallback */}
-        <Suspense fallback={null}>
-            <NeuralField />
-        </Suspense>
-    </div>
+    <AmbientBackground />
 ));
 
 export const MainLayout = ({ children, currentView, onViewChange }) => {
