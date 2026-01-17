@@ -10,11 +10,18 @@ import ErrorBoundary from './components/ui/ErrorBoundary';
 export default function App() {
   const [currentView, setCurrentView] = useState('menu');
   const [quizMode, setQuizMode] = useState(null);
+  const [sessionKey, setSessionKey] = useState(0);
 
-  const handleStartQuiz = (mode) => {
+  // Memoize handlers to prevent prop drilling changes
+  const handleStartQuiz = React.useCallback((mode) => {
     setQuizMode(mode);
     setCurrentView('test');
-  };
+    setSessionKey(prev => prev + 1);
+  }, []);
+
+  const handleReturnToMenu = React.useCallback(() => {
+    setCurrentView('menu');
+  }, []);
 
   const renderView = () => {
     switch (currentView) {
@@ -23,8 +30,9 @@ export default function App() {
       case 'test':
         return (
           <QuizArena
+            key={sessionKey}
             quizMode={quizMode}
-            onExit={() => setCurrentView('menu')}
+            onExit={handleReturnToMenu}
             onRestart={handleStartQuiz}
           />
         );

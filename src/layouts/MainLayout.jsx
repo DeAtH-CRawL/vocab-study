@@ -1,28 +1,36 @@
-import React from 'react';
+import React, { Suspense, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ShieldCheck, Settings } from 'lucide-react';
+import { ShieldCheck } from 'lucide-react';
 import { Button } from '../components/ui/Button';
 import { CreatorSignature } from '../components/ui/CreatorSignature';
 
-const StarryBackground = () => (
+// Lazy load Three.js component
+const NeuralField = React.lazy(() => import('../components/background/NeuralField').then(module => ({ default: module.NeuralField })));
+
+const StarryBackground = memo(() => (
     <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-gemini-purple/20 rounded-full blur-[120px] animate-pulse-glow" />
         <div className="absolute bottom-[-10%] right-[-10%] w-[30%] h-[30%] bg-gemini-cyan/10 rounded-full blur-[100px] animate-pulse-glow" style={{ animationDelay: '1s' }} />
         <div className="absolute top-[20%] right-[20%] w-[20%] h-[20%] bg-gemini-pink/5 rounded-full blur-[80px]" />
+
+        {/* WebGL Layer with CSS Fallback */}
+        <Suspense fallback={null}>
+            <NeuralField />
+        </Suspense>
     </div>
-);
+));
 
 export const MainLayout = ({ children, currentView, onViewChange }) => {
     const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 });
     const containerRef = React.useRef(null);
 
-    const handleMouseMove = (e) => {
+    const handleMouseMove = React.useCallback((e) => {
         if (!containerRef.current) return;
         const rect = containerRef.current.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
         setMousePosition({ x, y });
-    };
+    }, []);
 
     return (
         <div
@@ -49,6 +57,9 @@ export const MainLayout = ({ children, currentView, onViewChange }) => {
                 <div
                     className="flex items-center gap-3 cursor-pointer group"
                     onClick={() => onViewChange('menu')}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => e.key === 'Enter' && onViewChange('menu')}
                 >
                     <div className="p-2 bg-gradient-to-br from-gemini-purple to-gemini-cyan rounded-xl shadow-lg shadow-purple-500/20 group-hover:scale-110 transition-transform">
                         <ShieldCheck size={24} className="text-white" />

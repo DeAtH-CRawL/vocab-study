@@ -8,6 +8,8 @@ export const Input = forwardRef(({ className, error, ...props }, ref) => {
             <motion.input
                 ref={ref}
                 layout
+                animate={error ? { x: [-5, 5, -5, 5, 0] } : {}}
+                transition={{ type: "spring", stiffness: 300, damping: 10 }}
                 className={cn(
                     "w-full bg-gemini-surface/30 backdrop-blur-md border-2 border-white/5 rounded-2xl px-6 py-5 text-xl font-medium outline-none transition-all duration-300 placeholder:text-slate-600 focus:bg-gemini-surface/50 focus:border-gemini-cyan/50 focus:shadow-glow text-white",
                     error && "border-rose-500/50 bg-rose-950/10 text-rose-200 focus:border-rose-500 focus:shadow-none",
