@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { VocabularyProvider } from './contexts/VocabularyContext';
 import { MainLayout } from './layouts/MainLayout';
@@ -51,6 +52,7 @@ export default function App() {
         </MainLayout>
       </VocabularyProvider>
       <SpeedInsights />
+      <Analytics />
     </ErrorBoundary>
   );
 }
